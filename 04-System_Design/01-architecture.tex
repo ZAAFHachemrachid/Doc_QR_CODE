@@ -1,0 +1,43 @@
+\section{System Architecture}
+\begin{infobox}
+This section describes the overall architecture of the QR Code Attendance System, including the technology stack and component interactions.
+\end{infobox}
+
+\subsection{High-Level Architecture}
+\textcolor{TextBlack}{
+    The system follows a three-tier architecture:
+    \begin{itemize}
+        \item \implementation{Mobile Application (Flutter)} - For students to scan QR codes
+        \item \implementation{Backend Server (REST API)} - For business logic and data processing
+        \item \implementation{Database (PostgreSQL)} - For data persistence and management
+    \end{itemize}
+}
+
+\begin{figure}[h]
+    \centering
+    % Add your architecture diagram here
+    \caption{High-Level System Architecture}
+\end{figure}
+
+\subsection{Technology Stack Selection}
+\textcolor{TextBlack}{
+    The following technologies were chosen for their specific advantages:
+
+    \subsubsection{Frontend - Flutter}
+    \begin{itemize}
+        \item \result{Cross-platform development capability}
+        \item \result{Rich UI components and smooth animations}
+        \item \result{Built-in camera and QR code scanning libraries}
+        \item \result{Strong security features for mobile applications}
+        \item \result{Excellent performance and native compilation}
+    \end{itemize}
+
+    \subsubsection{Database - PostgreSQL}
+    \begin{itemize}
+        \item \result{Robust ACID compliance for data integrity}
+        \item \result{Advanced security features and role management}
+        \item \result{Excellent performance with large datasets}
+        \item \result{JSON support for flexible data structures}
+        \item \result{Strong community support and documentation}
+    \end{itemize}
+}

@@ -1,0 +1,64 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\usepackage{style}  % Our custom style file
+
+% Define custom colors
+\definecolor{ChapterPurple}{RGB}{128,0,128}
+\definecolor{InfoBlue}{RGB}{0,128,255}
+\definecolor{SectionTeal}{RGB}{0,128,128}
+\definecolor{NoteGreen}{RGB}{0,128,0}
+\definecolor{TextBlack}{RGB}{0,0,0}
+
+\title{%
+    \begin{tcolorbox}[
+        base,
+        width=\textwidth,
+        colback=ChapterPurple!10,
+        colframe=ChapterPurple
+    ]
+    \centering
+    \Huge\textcolor{ChapterPurple}{QR Code-Based Attendance System}\\[0.5em]
+    \large\textcolor{TextBlack}{A Modern Approach to Student Attendance Management}
+    \end{tcolorbox}
+}
+\author{
+    \begin{tcolorbox}[
+        base,
+        width=0.8\textwidth,
+        colback=InfoBlue!5,
+        colframe=InfoBlue
+    ]
+    \centering
+    \textcolor{InfoBlue}{$\rightarrow$}\quad\textcolor{TextBlack}{[Your Name]}\\[0.3em]
+    \textcolor{SectionTeal}{$\bullet$}\quad\textcolor{TextBlack}{[Your University]}\\[0.3em]
+    \textcolor{NoteGreen}{$\diamond$}\quad\textcolor{TextBlack}{[Your Email]}
+    \end{tcolorbox}
+}
+\date{\textcolor{TextBlack}{\today}}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\chapter{Introduction}
+\begin{infobox}
+This chapter introduces the concept of QR code-based attendance systems and their significance in modern educational environments.
+\end{infobox}
+
+\input{01-Introduction/01-background}
+\input{01-Introduction/02-objectives}
+
+% Example of using custom icons and boxes
+\begin{notebox}
+\objective{The primary goal is to develop an efficient and secure attendance tracking system.}
+\end{notebox}
+
+\begin{warningbox}
+\method{Important considerations for implementation and security will be discussed in later chapters.}
+\end{warningbox}
+
+% Other chapters will be included similarly
+\end{document}

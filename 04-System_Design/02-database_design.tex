@@ -1,0 +1,63 @@
+\section{Database Design}
+\begin{infobox}
+This section details the PostgreSQL database design, including the schema, relationships, and optimization strategies.
+\end{infobox}
+
+\subsection{Entity Relationship Diagram}
+\textcolor{TextBlack}{
+    The database schema consists of the following main entities:
+    \begin{itemize}
+        \item \reference{Users (Students, Teachers, Administrators)}
+        \item \reference{Courses}
+        \item \reference{Attendance Records}
+        \item \reference{QR Code Sessions}
+        \item \reference{Academic Terms}
+    \end{itemize}
+}
+
+\subsection{Database Schema}
+\begin{notebox}
+\textcolor{TextBlack}{
+    Key tables and their relationships:
+
+    \begin{verbatim}
+    -- Users Table
+    CREATE TABLE users (
+        user_id SERIAL PRIMARY KEY,
+        username VARCHAR(50) UNIQUE,
+        role VARCHAR(20),
+        email VARCHAR(100),
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+    -- Courses Table
+    CREATE TABLE courses (
+        course_id SERIAL PRIMARY KEY,
+        course_code VARCHAR(20),
+        course_name VARCHAR(100),
+        teacher_id INTEGER REFERENCES users(user_id)
+    );
+
+    -- Attendance Records Table
+    CREATE TABLE attendance_records (
+        record_id SERIAL PRIMARY KEY,
+        student_id INTEGER REFERENCES users(user_id),
+        session_id INTEGER REFERENCES qr_sessions(session_id),
+        timestamp TIMESTAMP,
+        location_data JSONB
+    );
+    \end{verbatim}
+}
+\end{notebox}
+
+\subsection{Optimization Strategies}
+\textcolor{TextBlack}{
+    The following strategies are implemented for optimal performance:
+    \begin{itemize}
+        \item \method{Indexed queries for frequent operations}
+        \item \method{Partitioned tables for attendance records}
+        \item \method{Materialized views for reporting}
+        \item \method{JSON compression for location data}
+        \item \method{Regular VACUUM and analysis}
+    \end{itemize}
+}

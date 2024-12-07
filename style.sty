@@ -1,0 +1,140 @@
+\ProvidesPackage{style}
+
+% Required packages
+\RequirePackage{xcolor}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{fancyhdr}
+\RequirePackage[explicit]{titlesec}
+\RequirePackage{geometry}
+\RequirePackage{amssymb}
+
+% Page geometry
+\geometry{
+    a4paper,
+    top=3cm,
+    bottom=2.5cm,
+    left=2.5cm,
+    right=2.5cm,
+    headheight=15pt
+}
+
+% Color definitions
+\definecolor{TitleBlue}{RGB}{41,128,185}
+\definecolor{InfoBlue}{RGB}{52,152,219}
+\definecolor{NoteGreen}{RGB}{46,204,113}
+\definecolor{WarningOrange}{RGB}{230,126,34}
+\definecolor{ChapterPurple}{RGB}{142,68,173}
+\definecolor{SectionTeal}{RGB}{26,188,156}
+\definecolor{TextBlack}{RGB}{44,62,80}
+
+% Custom boxes
+\tcbset{
+    base/.style={
+        colframe=TitleBlue,
+        colback=white,
+        coltitle=TextBlack,
+        arc=0pt,
+        outer arc=0pt,
+        boxrule=2pt,
+        left=5mm,
+        right=5mm,
+        top=5mm,
+        bottom=5mm,
+        fonttitle=\bfseries,
+    }
+}
+
+% Define custom environments
+\newtcolorbox{infobox}[1][]{
+    base,
+    title={$\rightarrow$\quad Information},
+    colframe=InfoBlue,
+    colbacktitle=InfoBlue!30,
+    colback=InfoBlue!5,
+    #1
+}
+
+\newtcolorbox{notebox}[1][]{
+    base,
+    title={$\bullet$\quad Note},
+    colframe=NoteGreen,
+    colbacktitle=NoteGreen!30,
+    colback=NoteGreen!5,
+    #1
+}
+
+\newtcolorbox{warningbox}[1][]{
+    base,
+    title={$\bigtriangleup$\quad Warning},
+    colframe=WarningOrange,
+    colbacktitle=WarningOrange!30,
+    colback=WarningOrange!5,
+    #1
+}
+
+% Chapter styling
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries\color{TextBlack}}
+{%
+    \vspace{-5em}\hfill%
+    \begin{tcolorbox}[
+        base,
+        colback=ChapterPurple,
+        colframe=ChapterPurple,
+        width=2.5cm,
+        height=2.5cm,
+        valign=center,
+        halign=center
+    ]
+    \color{white}\Large\thechapter
+    \end{tcolorbox}
+}
+{1em}
+{%
+    \begin{tcolorbox}[
+        enhanced,
+        colback=ChapterPurple!10,
+        colframe=ChapterPurple!10,
+        boxrule=0pt,
+        left=10pt,
+        right=10pt,
+        top=5pt,
+        bottom=5pt
+    ]
+    #1
+    \end{tcolorbox}
+}
+
+% Section styling
+\titleformat{\section}
+{\normalfont\Large\bfseries}
+{\color{SectionTeal}\thesection}{1em}
+{\begin{tcolorbox}[
+    enhanced,
+    colback=SectionTeal!10,
+    colframe=SectionTeal!10,
+    boxrule=0pt,
+    left=5pt,
+    right=5pt,
+    top=2pt,
+    bottom=2pt
+]
+\color{TextBlack}#1
+\end{tcolorbox}}
+
+% Header and footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\color{ChapterPurple}$\bullet$\quad\textcolor{TextBlack}{\leftmark}}
+\fancyhead[R]{\color{TextBlack}\thepage}
+\fancyfoot[C]{\small\color{TitleBlue}$\bullet$\quad\textcolor{TextBlack}{QR Code Attendance System}}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+% Custom commands for icons with colored icons and black text
+\newcommand{\objective}[1]{\textcolor{InfoBlue}{$\rightarrow$}\quad\textcolor{TextBlack}{#1}}
+\newcommand{\method}[1]{\textcolor{NoteGreen}{$\circ$}\quad\textcolor{TextBlack}{#1}}
+\newcommand{\result}[1]{\textcolor{ChapterPurple}{$\diamond$}\quad\textcolor{TextBlack}{#1}}
+\newcommand{\reference}[1]{\textcolor{SectionTeal}{$\bullet$}\quad\textcolor{TextBlack}{#1}}
+\newcommand{\implementation}[1]{\textcolor{InfoBlue}{$\rightarrow$}\quad\textcolor{TextBlack}{#1}}
+\newcommand{\testing}[1]{\textcolor{WarningOrange}{$\triangleright$}\quad\textcolor{TextBlack}{#1}}
